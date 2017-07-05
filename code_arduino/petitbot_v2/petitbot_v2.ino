@@ -12,7 +12,7 @@
 #include <ESP8266WebServer.h>
 
 ESP8266WebServer server(80); //objet serveur
-const char* hostAP = "PetitBot"; // nom du point d'acces petitBot
+const char* hostAP = "AquiBot1"; // nom du point d'acces petitBot
 
 //Bibliotheque Servo
 #include <Servo.h>
@@ -161,7 +161,7 @@ void serveur() {
     if (vitesse == "" || vitesse.toInt() > 90) vitesse = "90";
     servoG.write(90 - vitesse.toInt());
     servoD.write(90 - vitesse.toInt());
-    server.send(200, "text/json", "droite : " + String(100 * (90 + vitesse.toInt()) / 180) + " %");
+    server.send(200, "text/json", "gauche : " + String(100 * (90 + vitesse.toInt()) / 180) + " %");
   });
 
   server.on("/stop", HTTP_GET, []() {
